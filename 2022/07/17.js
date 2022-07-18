@@ -36,17 +36,12 @@ const hideEmail = (email, hideFull) => {
 }
 
 const obfuscate = (str) => {
-    const chars = [];
-
-    for (let i = 0; i < str.length; i++) {
-        if (i == 0 || i == str.length-1) {
-            chars.push(str.charAt(i));
-        } else {
-            chars.push('*');
-        }
-    }
-
-    return chars.join('');
+    return str
+        .split('')
+        .map((c, i) => {
+            return i === 0 || i === str.length-1 ? c : '*'
+        })
+        .join('');
 }
 
 console.log(hideEmail('example@example.com'));
